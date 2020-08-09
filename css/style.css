@@ -1,7 +1,15 @@
-body {
+.proposal {
     font-family: Gill Sans, sans-serif;
     font-size: 18px;
     width: 40em;
     margin-left: auto;
     margin-right: auto;
+}
+
+label {
+    display:block;
+}
+
+.img-max {
+    max-width: 250px;
 }
