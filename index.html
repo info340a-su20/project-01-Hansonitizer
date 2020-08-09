@@ -2,10 +2,166 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="author" content="">
-    <meta name="description" content="">
-    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="author" content="Sitong Wu and Hanson Vuong">
+    <meta name="description" content="Web app that suggestions games you should play.">
+    <title>What to Play Next</title>
+    <script>
+        function switchview(checkbox) {
+            var all = document.getElementById("all");
+            var img = document.getElementById("img");
+            if (checkbox.checked) {
+                img.style.display = "block"
+                all.style.display = "none"
+            } else {
+                all.style.display = "block"
+                img.style.display = "none"
+            }
+        }
+    </script>
 </head>
+
 <body>
+    <header class="jumbotron jumbotron-fluid bg-info text-white">
+        <div class="container-fluid">
+            <h1>What to Play Next</h1>
+            <p>Suggesting games for you to play!</p>
+        </div>
+    </header>
+
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col col-3 bg-dark text-white">
+                    <nav>
+                        <h2>Filters</h2>
+                        <div class="filter">
+                            <label for="length">Game Length (hrs)</label>
+                            <input type="number" name="length" id="length" min="0">
+                        </div>
+                        <div class="filter">
+                            <label for="rating">Game Rating</label>
+                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5">
+                            <output class="rating-output" for="rating"></output>
+                        </div>
+                        <div class="filter">
+                            <label for="year">Release Year</label>
+                            <input type="year" name="year" id="year">
+                        </div>  
+                        <div class="filter">
+                            <label for="platform">Platform</label>
+                            <select name="platform" id="platform">
+                                <option value="switch">Switch</option>
+                                <option value="xbone">Xbox One</option>
+                                <option value="ps4">PlayStation 4</option>
+                            </select>
+                        </div>
+                        <div class="filter">
+                            <label for="genre">Genre</label>
+                            <select name="genre" id="genre">
+                                <option value="action">Action</option>
+                                <option value="shooter">Shooter</option>
+                                <option value="rpg">RPG</option>
+                            </select>
+                        </div>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col">
+                                    <p>all</p>
+                                </div>
+                                <div class="col">
+                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)">
+                                </div>
+                                <div class="col">
+                                    <p>img</p>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+                <div class="col col-9 bg-secondary" id="all">
+                    <!-- Game 1 -->
+                    <div class="mb-4 mt-4 card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3 img-fluid img-max" src="img/zelda_botw.png" alt="The Legend of Zelda: Breath of the Wild icon">
+                                </div>
+                                <div class="col-sm">
+                                    <h2 class="card-title">The Legend of Zelda: Breath of the Wild</h2>
+                                    <p class="card-text">Length: 87.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game 2 -->
+                    <div class="mb-4 card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3 img-fluid img-max" src="img/super_mario.png" alt="Super Mario Odyssey icon">
+                                </div>
+                                <div class="col-sm">
+                                    <h2 class="card-title">Super Mario Odyssey</h2>
+                                    <p class="card-text">Length: 26.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Game 3 -->
+                    <div class="mb-4 card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-auto">
+                                    <img class="pb-3 img-fluid img-max" src="img/three_houses.jpg" alt="Fire Emblem: Three Houses icon">
+                                </div>
+                                <div class="col-sm">
+                                    <h2 class="game-title">Fire Emblem: Three Houses</h2>
+                                    <p class="card-text">Length: 66 hours<br>Genre: RPG<br>Released: 2019<br>Rating: 89</p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col col-9 bg-secondary" id="img">
+                    <div class="row">
+                        <!-- Game 1 -->
+                        <div class="col">
+                            <div class="mb-2 mt-2 card">
+                                <div class="card-body card-img">
+                                            <img class="pb-3 img-fluid img-max" src="img/zelda_botw.png" alt="The Legend of Zelda: Breath of the Wild icon">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Game 2 -->
+                        <div class="col">
+                            <div class="mb-4 mt-2 card">
+                                <div class="card-body card-img">
+                                            <img class="pb-3 img-fluid img-max" src="img/super_mario.png" alt="Super Mario Odyssey icon">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Game 3 -->
+                        <div class="col">
+                            <div class="mb-4 mt-2 card">
+                                <div class="card-body card-img">
+                                            <img class="pb-3 img-fluid img-max" src="img/three_houses.jpg" alt="Fire Emblem: Three Houses icon">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+    </main>
+
 </body>
+
 </html>
