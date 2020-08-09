@@ -1,7 +1,11 @@
-body {
-    font-family: Gill Sans, sans-serif;
-    font-size: 18px;
-    width: 40em;
-    margin-left: auto;
-    margin-right: auto;
+.topbar{
+    font-family: fantasy, sans-serif;
+    background-color: aqua;
+    width: 100%;
+}
+
+h1{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
 }
