@@ -128,7 +128,7 @@ ul {
 }
 
 .slideshow li:nth-child(2) span { 
-    background-image: url(../img/smo.jpg
+    background-image: url(../img/smo.jpg);
     animation-delay: 5s;
 }
 
