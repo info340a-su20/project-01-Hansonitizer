@@ -6,6 +6,10 @@
     margin-right: auto;
 }
 
+* {
+    box-sizing: border-box;
+}
+
 label {
     display:block;
 }
@@ -35,6 +39,53 @@ nav h2{
     display: none;
 }
 
+.topbar{
+    color: white;
+    background-color: #000A80;
+}
+
+.game_icon_box{
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+}
+
+.game_icon{
+    margin: auto;
+    float: right;
+}
+
+.search{
+    margin: auto;
+}
+
+.search_input{
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-right: none;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+.search_btn{
+    float: left;
+    width: 20%;
+    max-width: 100px;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+}
+
+body{
+    /* IMG from: https://www.freelancer.com/contest/Gaming-web-Background-1489974-byentry-27670082?w=f&ngsw-bypass= */
+    background-image: url("../img/main.jpg");
+}
+
 /*Following codes are from this website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */
 input.apple-switch {
     position: relative;
@@ -42,10 +93,10 @@ input.apple-switch {
     outline: none;
     width: 50px;
     height: 30px;
-    background-color: #fff;
-    border: 1px solid #D9DADC;
+    background-color: lightblue;
+    border: 1px solid white;
     border-radius: 50px;
-    box-shadow: inset -20px 0 0 0 #fff;
+    box-shadow: inset -20px 0 0 0 grey;
   }
   
   input.apple-switch:after {
@@ -61,8 +112,8 @@ input.apple-switch {
   }
   
   input.apple-switch:checked {
-    box-shadow: inset 20px 0 0 0 #4ed164;
-    border-color: #4ed164;
+    box-shadow: inset 20px 0 0 0 grey;
+    border-color: white;
   }
   
   input.apple-switch:checked:after {

@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <meta name="author" content="Sitong Wu and Hanson Vuong">
     <meta name="description" content="Web app that suggestions games you should play.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,20 +25,28 @@
 </head>
 
 <body>
-    <header class="jumbotron jumbotron-fluid bg-info text-white">
+    <header class="jumbotron jumbotron-fluid topbar">
         <div class="container-fluid">
-            <div class="col col-5 float-right align-bottom">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <div class="row">
+                <div class="col col-2 col-lg-1 col-xl-1 game_icon_box">
+                    <i class="fas fa-gamepad fa-5x game_icon"></i>
+                </div>
+                <div class="col col-10 col-lg-auto col-xl-auto">
+                    <h1>What to Play Next</h1>
+                    <p>Suggesting games for you to play!</p>
+                </div>
+                <div class="col col-12 col-lg-8 col-xl-7 search">
+                    <input class="search_input" type="text" placeholder="Search" aria-label="Search">
+                    <button class="search_btn"><i class="fas fa-search fa-flip-horizontal" aria-label="search button"></i></button>
+                </div>
             </div>
-            <h1>What to Play Next</h1>
-            <p>Suggesting games for you to play!</p>
         </div>
     </header>
 
     <main>
         <div class="container">
             <div class="row">
-                <div class="col col-3 bg-dark text-white">
+                <div class="col col-12 col-lg-3 bg-dark text-white">
                     <nav>
                         <h2>Filters</h2>
                         <div class="filter">
@@ -85,7 +94,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col col-9 bg-secondary" id="all">
+                <div class="col col-12 col-lg-9 bg-secondary" id="all">
                     <!-- Game 1 -->
                     <div class="mb-4 mt-4 card">
                         <div class="card-body">
@@ -132,7 +141,7 @@
                     </div>
 
                 </div>
-                <div class="col col-9 bg-secondary" id="img">
+                <div class="col col-12 col-lg-9 bg-secondary" id="img">
                     <div class="row">
                         <!-- Game 1 -->
                         <div class="col">
