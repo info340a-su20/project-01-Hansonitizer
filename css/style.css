@@ -23,8 +23,17 @@ nav div{
     margin-bottom: 0.5rem;
 }
 
+.card{
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
 nav h2{
     padding-top: 0.5rem;
+}
+
+.filter {
+    margin-bottom: 25px;
 }
 
 .card-img{
@@ -84,6 +93,34 @@ nav h2{
 body{
     /* IMG from: https://www.freelancer.com/contest/Gaming-web-Background-1489974-byentry-27670082?w=f&ngsw-bypass= */
     background-image: url("../img/main.jpg");
+}
+
+footer {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#hover-info h3 {
+    transition: .5s ease;
+    opacity: 0;
+}
+
+#hover-info p {
+    transition: .5s ease;
+    opacity: 0;
+}
+
+#hover-info:hover img {
+    opacity: 0.3;
+}
+
+#hover-info:hover h3 {
+    opacity: 1;
+}
+
+#hover-info:hover p {
+    opacity: 1;
 }
 
 /*Following codes are from this website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */
