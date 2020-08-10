@@ -37,8 +37,8 @@
                     <p>Suggesting games for you to play!</p>
                 </div>
                 <div class="col col-12 col-lg-8 col-xl-7 search">
-                    <input class="search_input" type="text" placeholder="Search" aria-label="Search">
-                    <button class="search_btn"><i class="fas fa-search fa-flip-horizontal" aria-label="search button"></i></button>
+                    <input class="search_input" type="text" placeholder="Search" aria-label="Search" role="input">
+                    <button class="search_btn"><i class="fas fa-search fa-flip-horizontal" aria-label="search button" role="button"></i></button>
                 </div>
             </div>
         </div>
@@ -49,23 +49,37 @@
             <div class="row">
                 <div class="col col-12 col-lg-3 bg-dark text-white">
                     <nav>
+                        <h2>View</h2>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col col-auto list">
+                                    <p>List</p>
+                                </div>
+                                <div class="col col-auto">
+                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
+                                </div>
+                                <div class="col col-auto grid">
+                                    <p>Grid</p>
+                                </div>
+                            </div>
+                        </div>
                         <h2>Filters</h2>
                         <div class="filter">
                             <label for="length">Game Length (hrs)</label>
-                            <input type="number" name="length" id="length" min="0" aria-label="Game Length">
+                            <input type="number" name="length" id="length" min="0" aria-label="Game Length" role="input">
                         </div>
                         <div class="filter">
                             <label for="rating">Game Rating</label>
-                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5" class="slider" aria-label="Game Rating">
+                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5" class="slider" aria-label="Game Rating" role="slider">
                             <output class="rating-output" for="rating"></output>
                         </div>
                         <div class="filter">
                             <label for="year">Release Year</label>
-                            <input type="year" name="year" id="year" aria-label="Release year">
+                            <input type="year" name="year" id="year" aria-label="Release year" role="input">
                         </div>  
                         <div class="filter">
                             <label for="platform">Platform</label>
-                            <select name="platform" id="platform" aria-label="Platform" >
+                            <select name="platform" id="platform" aria-label="Platform" role="selector">
                                 <option value="switch">Switch</option>
                                 <option value="xbone">Xbox One</option>
                                 <option value="ps4">PlayStation 4</option>
@@ -73,25 +87,11 @@
                         </div>
                         <div class="filter">
                             <label for="genre">Genre</label>
-                            <select name="genre" id="genre" aria-label="Genre">
+                            <select name="genre" id="genre" aria-label="Genre" role="selector">
                                 <option value="action">Action</option>
                                 <option value="shooter">Shooter</option>
                                 <option value="rpg">RPG</option>
                             </select>
-                        </div>
-                        <label for="View">View<br></label>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col">
-                                    <p>List</p>
-                                </div>
-                                <div class="col">
-                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)" aria-label="Change view" >
-                                </div>
-                                <div class="col">
-                                    <p>Grid</p>
-                                </div>
-                            </div>
                         </div>
                     </nav>
                 </div>

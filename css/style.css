@@ -6,6 +6,12 @@
     margin-right: auto;
 }
 
+body{
+    /* IMG from: https://www.freelancer.com/contest/Gaming-web-Background-1489974-byentry-27670082?w=f&ngsw-bypass= */
+    background-image: url("../img/main.jpg");
+    font-family: 'Poppins', sans-serif;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -72,6 +78,19 @@ nav h2{
     margin: auto;
 }
 
+.apple-switch {
+    margin: auto;
+}
+
+.list {
+    text-align: right;
+}
+
+.grid {
+    text-align: left;
+}
+
+/*Following codes based on turtorial: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_search_button */
 .search_input{
     padding: 10px;
     font-size: 17px;
@@ -97,12 +116,8 @@ nav h2{
 .search_btn:hover {
     background: #3b2053;
 }
+/*END*/
 
-body{
-    /* IMG from: https://www.freelancer.com/contest/Gaming-web-Background-1489974-byentry-27670082?w=f&ngsw-bypass= */
-    background-image: url("../img/main.jpg");
-    font-family: 'Poppins', sans-serif;
-}
 
 footer {
     text-align: center;
@@ -139,7 +154,7 @@ footer {
     text-align: center;
 }
 
-/*Following codes are from this website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */
+/*Following codes are based on website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */
 input.apple-switch {
     position: relative;
     -webkit-appearance: none;
@@ -175,6 +190,7 @@ input.apple-switch {
   }
 /*END*/
 
+/*Folling codes are based on tutorial for slide: https://tympanus.net/codrops/2012/01/02/fullscreen-background-image-slideshow-with-css3/ */
 ul {
     list-style-type: none;
 }
@@ -279,7 +295,7 @@ ul {
         font-size: 150px 
     }
 }
-
+/*END*/
 
 
 
