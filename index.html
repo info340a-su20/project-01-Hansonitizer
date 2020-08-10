@@ -26,6 +26,9 @@
 <body>
     <header class="jumbotron jumbotron-fluid bg-info text-white">
         <div class="container-fluid">
+            <div class="col col-5 float-right align-bottom">
+                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            </div>
             <h1>What to Play Next</h1>
             <p>Suggesting games for you to play!</p>
         </div>
@@ -67,16 +70,17 @@
                                 <option value="rpg">RPG</option>
                             </select>
                         </div>
+                        <label for="View">View<br></label>
                         <div class="container">
                             <div class="row">
                                 <div class="col">
-                                    <p>all</p>
+                                    <p>List</p>
                                 </div>
                                 <div class="col">
-                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)">
+                                    <input aria-label="Change view" type="checkbox" class="apple-switch" onchange="switchview(this)">
                                 </div>
                                 <div class="col">
-                                    <p>img</p>
+                                    <p>Grid</p>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +96,7 @@
                                 </div>
                                 <div class="col-sm">
                                     <h2 class="card-title">The Legend of Zelda: Breath of the Wild</h2>
-                                    <p class="card-text">Length: 87.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97</p>
+                                    <p class="card-text">Length: 87.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97<br>Platform: Nintendo Switch</p>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +111,7 @@
                                 </div>
                                 <div class="col-sm">
                                     <h2 class="card-title">Super Mario Odyssey</h2>
-                                    <p class="card-text">Length: 26.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97</p>
+                                    <p class="card-text">Length: 26.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97 <br>Platform: Nintendo Switch</p>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +126,7 @@
                                 </div>
                                 <div class="col-sm">
                                     <h2 class="game-title">Fire Emblem: Three Houses</h2>
-                                    <p class="card-text">Length: 66 hours<br>Genre: RPG<br>Released: 2019<br>Rating: 89</p></p>
+                                    <p class="card-text">Length: 66 hours<br>Genre: RPG<br>Released: 2019<br>Rating: 89<br>Platform: Nintendo Switch</p></p>
                                 </div>
                             </div>
                         </div>
@@ -162,6 +166,8 @@
         
 
     </main>
+
+    <footer>Images from Nintendo Co. Ltd.<br>Website created by Hanson Vuong and Sitong Wu </footer>
 
 </body>
 
