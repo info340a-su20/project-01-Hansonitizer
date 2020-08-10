@@ -36,6 +36,10 @@ nav h2{
     margin-bottom: 25px;
 }
 
+.slider {
+    fill: #2c8e88;
+}
+
 .card-img{
     justify-content: center;
 }
@@ -50,7 +54,7 @@ nav h2{
 
 .topbar{
     color: white;
-    background-color: #000A80;
+    background-color: #9e156d;
 }
 
 .game_icon_box{
@@ -83,22 +87,28 @@ nav h2{
     width: 20%;
     max-width: 100px;
     padding: 10px;
-    background: #2196F3;
+    background: #4c2569;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
     border-left: none;
 }
 
+.search_btn:hover {
+    background: #3b2053;
+}
+
 body{
     /* IMG from: https://www.freelancer.com/contest/Gaming-web-Background-1489974-byentry-27670082?w=f&ngsw-bypass= */
     background-image: url("../img/main.jpg");
+    font-family: 'Poppins', sans-serif;
 }
 
 footer {
     text-align: center;
     margin-top: 10px;
     margin-bottom: 10px;
+    color: white;
 }
 
 #hover-info h3 {
@@ -117,10 +127,16 @@ footer {
 
 #hover-info:hover h3 {
     opacity: 1;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    padding: 70px 0;
 }
 
 #hover-info:hover p {
     opacity: 1;
+    font-size: 20px;
+    text-align: center;
 }
 
 /*Following codes are from this website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */
@@ -191,14 +207,13 @@ ul {
     animation-fill-mode: forwards;
 }
 .slideshow li div h1 { 
-    font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     font-size: 50px;
     padding-left: 10px;
     padding-right: 10px;
     margin-bottom: 400px;
     line-height: 1; 
     text-shadow: 1px 1px 2px rgba(0,0,0,0.8),2px 2px 5px rgba(0, 0, 0, 0.4);
-
 }
 
 .slideshow li:nth-child(1) span { 

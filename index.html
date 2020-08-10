@@ -8,6 +8,7 @@
     <meta name="author" content="Sitong Wu and Hanson Vuong">
     <meta name="description" content="Web app that suggestions games you should play.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>What to Play Next</title>
     <script>
         function switchview(checkbox) {
@@ -25,7 +26,7 @@
 </head>
 
 <body>
-    <header class="jumbotron jumbotron-fluid topbar">
+    <header class="jumbotron jumbotron-fluid topbar" aria-label="Jumbotron header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col col-2 col-lg-1 col-xl-1 game_icon_box">
@@ -51,16 +52,16 @@
                         <h2>Filters</h2>
                         <div class="filter">
                             <label for="length">Game Length (hrs)</label>
-                            <input type="number" name="length" id="length" min="0">
+                            <input type="number" name="length" id="length" min="0" aria-label="Game Length">
                         </div>
                         <div class="filter">
                             <label for="rating">Game Rating</label>
-                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5" aria-label="Game Rating">
+                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5" class="slider" aria-label="Game Rating">
                             <output class="rating-output" for="rating"></output>
                         </div>
                         <div class="filter">
                             <label for="year">Release Year</label>
-                            <input type="year" name="year" id="year">
+                            <input type="year" name="year" id="year" aria-label="Release year">
                         </div>  
                         <div class="filter">
                             <label for="platform">Platform</label>
@@ -95,6 +96,7 @@
                     </nav>
                 </div>
                 <div class="col col-12 col-lg-9 bg-secondary" id="all">
+                   
                     <!-- Game 1 -->
                     <div class="card">
                         <div class="card-body">
@@ -143,6 +145,7 @@
                 </div>
                 <div class="col col-12 col-lg-9 bg-secondary" id="img">
                     <div class="row">
+
                         <!-- Game 1 -->
                         <div class="col-md-6">
                             <div class="card card-img-top" id="hover-info">
@@ -153,6 +156,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <!-- Game 2 -->
                         <div class="col-md-6">
                             <div class="card card-img-top" id="hover-info">
@@ -174,7 +178,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -183,7 +186,7 @@
 
     </main>
 
-    <footer>Images from Nintendo Co. Ltd.<br>Website created by Hanson Vuong and Sitong Wu </footer>
+    <footer>Website created by Hanson Vuong and Sitong Wu<br>Images from Nintendo Co. Ltd.<br>Published in 2020</footer>
 
 </body>
 
