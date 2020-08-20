@@ -10,19 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>What to Play Next</title>
-    <script>
-        function switchview(checkbox) {
-            var all = document.getElementById("all");
-            var img = document.getElementById("img");
-            if (checkbox.checked) {
-                img.style.display = "block"
-                all.style.display = "none"
-            } else {
-                all.style.display = "block"
-                img.style.display = "none"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -95,7 +82,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="all">
+                <div class="col col-12 col-lg-9 bg-secondary" id="listView">
                    
                     <!-- Game 1 -->
                     <div class="card">
@@ -143,7 +130,7 @@
                     </div>
 
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="img">
+                <div class="col col-12 col-lg-9 bg-secondary" id="cardView">
                     <div class="row">
 
                         <!-- Game 1 -->
