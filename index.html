@@ -10,19 +10,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>What to Play Next</title>
-    <script>
-        function switchview(checkbox) {
-            var all = document.getElementById("all");
-            var img = document.getElementById("img");
-            if (checkbox.checked) {
-                img.style.display = "block"
-                all.style.display = "none"
-            } else {
-                all.style.display = "block"
-                img.style.display = "none"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -95,7 +82,7 @@
                         </div>
                     </nav>
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="all">
+                <div class="col col-12 col-lg-9 bg-secondary" id="listView">
                    
                     <!-- Game 1 -->
                     <div class="card">
@@ -143,41 +130,9 @@
                     </div>
 
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="img">
-                    <div class="row">
+                <div class="col col-12 col-lg-9 bg-secondary">
+                    <div class="row" id="cardView">
 
-                        <!-- Game 1 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/zelda_botw.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">The Legend of Zelda: Breath of the Wild</h3>
-                                    <p class="card-text text-black">Action<br>87.5 hours <br>2017</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Game 2 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/super_mario.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">Super Mario Odyssey</h3>
-                                    <p class="card-text text-black">Action<br>26.5 hours<br>2017</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Game 3 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/three_houses.jpg" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">Fire Emblem: Three Houses</h3>
-                                    <p class="card-text text-black">Action<br>66 hours<br>2019</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
