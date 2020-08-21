@@ -1,13 +1,15 @@
 // Switch between two views
 function switchview(checkbox) {
-    var all = document.getElementById("listView");
-    var img = document.getElementById("cardView");
+    let listViewElem = document.getElementById("listView");
+    let cardViewElem = document.getElementById("cardView");
     if (checkbox.checked) {
-        img.style.display = "block"
-        all.style.display = "none"
+        renderCardView(gameList);
+        listViewElem.style.display = "none"
+        cardViewElem.style.display = "block"
     } else {
-        all.style.display = "block"
-        img.style.display = "none"
+        renderListView(gameList)
+        cardViewElem.style.display = "none"
+        listViewElem.style.display = "block"
     }
 }
 
@@ -26,8 +28,7 @@ function getGameListByPage(pageNum, pageCounts) {
         alterGameList(data);
         if (gameList.length >= (pageCounts * 20)){
             console.log(gameList);
-            //renderListView(gameList);
-            renderCardView(gameList);
+            renderListView(gameList);
         }
         return data;
     })
@@ -67,7 +68,65 @@ function renderCardView(list) {
 }
 
 function renderSingleListView(game) {
+    let cardElem = document.createElement("div");
+    cardElem.classList.add("card");
+    let cardBodyElem = document.createElement("div");
+    cardBodyElem.classList.add("card-body");
+    cardElem.appendChild(cardBodyElem);
+    let rowElem = document.createElement("div");
+    rowElem.classList.add("row");
+    cardBodyElem.appendChild(rowElem);
+    let imgColElem = document.createElement("div");
+    imgColElem.classList.add("col-sm-auto");
+    rowElem.appendChild(imgColElem);
+    let textColElem = document.createElement("div");
+    textColElem.classList.add("col-sm");
+    rowElem.appendChild(textColElem);
+    let imgElem = document.createElement("img");
+    imgElem.classList.add("pb-3", "img-fluid", "img-max");
+    imgElem.src = game.background_image;
+    imgElem.alt = "img of " + game.name;
+    imgElem.setAttribute("aria-label", ("img of " + game.name));
+    imgColElem.appendChild(imgElem);
+    let h2Elem = document.createElement("h2");
+    h2Elem.classList.add("card-title");
+    h2Elem.textContent = game.name;
+    textColElem.appendChild(h2Elem);
+    let pElem = document.createElement("p");
+    pElem.classList.add("card-text");
+    pElem.innerHTML = "Rating: " + game.rating + "<br>" 
+        + "Length: " + game.playtime + " hours" + "<br>"
+        + "Released: " + game.released + "<br>"
+        + "Genres: " + createGenreString(game) + "<br>"
+        + "Platforms: " + createPlatformString(game); 
+    textColElem.appendChild(pElem);
+    let listViewElem = document.querySelector("#listView");
+    listViewElem.appendChild(cardElem);
+}
 
+function createGenreString(game){
+    let genreList = [];
+    for (let each of game.genres) {
+        genreList.push(each.name);
+    }
+    return arrayToString(genreList);
+}
+
+function createPlatformString(game){
+    let platformList = [];
+    for (let each of game.platforms) {
+        platformList.push(each.platform.name);
+    }
+    return arrayToString(platformList);
+}
+
+function arrayToString(array) {
+    resultString = "";
+    for (let each of array) {
+        resultString = resultString + each + " / ";
+    }
+    resultString = resultString.substring(0, resultString.length - 3);
+    return resultString;
 }
 
 function renderSingleCardView(game) {
@@ -82,6 +141,7 @@ function renderSingleCardView(game) {
     </div>
     </div>`);
     $('#cardView').append(cardhtml);
+
 }
 
 
