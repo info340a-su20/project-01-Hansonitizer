@@ -144,7 +144,7 @@ function renderSingleListView(game) {
     textColElem.classList.add("col-sm");
     rowElem.appendChild(textColElem);
     let imgElem = document.createElement("img");
-    imgElem.classList.add("pb-3", "img-fluid", "img-max");
+    imgElem.classList.add("pb-3", "img-fluid", "img-max", "fit-list-image");
     imgElem.src = game.background_image;
     imgElem.alt = "img of " + game.name;
     imgElem.setAttribute("aria-label", ("img of " + game.name));
@@ -155,7 +155,8 @@ function renderSingleListView(game) {
     textColElem.appendChild(h2Elem);
     let pElem = document.createElement("p");
     pElem.classList.add("card-text");
-    pElem.innerHTML = "Rating: " + game.rating + "<br>" 
+    pElem.innerHTML = "User Rating: " + game.rating + "<br>"
+        + "Metacritic Score: " + game.metacritic + "<br>"
         + "Length: " + game.playtime + " hours" + "<br>"
         + "Released: " + game.released + "<br>"
         + "Genres: " + createGenreString(game) + "<br>"
@@ -173,7 +174,7 @@ function renderSingleCardView(game) {
     <img class="card-img img-fluid fit-image" src="${game.background_image}" alt="Card image">
     <div class="card-img-overlay">
         <h3 class="card-title text-black">${game.name}</h3>
-        <p class="card-text text-black">${game.genre}<br>${game.playtime} hours<br>${game.released}<br>${game.platforms[1].platform.name}, ${game.platforms[2].platform.name}</p>
+        <p class="card-text text-black">${createGenreString(game)}<br>${game.playtime} hours<br>${game.released}<br>${createPlatformString(game)}</p>
     </div>
     </div>
     </div>`);
