@@ -133,16 +133,16 @@ function renderSingleCardView(game) {
     var cardhtml = 
     (`<div class="col-md-6">
     <div class="card card-img-top" id="hover-info">
-    <img class="card-img img-fluid" src="${game.background_image}" alt="Card image">
+    <img class="card-img img-fluid fit-image" src="${game.background_image}" alt="Card image">
     <div class="card-img-overlay">
         <h3 class="card-title text-black">${game.name}</h3>
-        <p class="card-text text-black">${game.genre}<br>${game.playtime}<br>${game.released}<br>${game.platforms}</p>
+        <p class="card-text text-black">${game.genre}<br>${game.playtime} hours<br>${game.released}<br>${game.platforms[1].platform.name}, ${game.platforms[2].platform.name}</p>
     </div>
     </div>
     </div>`);
-    $('#cardView').append(cardhtml);
-
+    $('#cardrow').append(cardhtml);
 }
+
 
 
 
