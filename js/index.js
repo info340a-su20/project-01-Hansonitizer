@@ -16,12 +16,12 @@ function switchview(checkbox) {
     let cardViewElem = document.getElementById("cardView");
     if (checkbox.checked) {
         renderCardView(gameList);
-        listViewElem.style.display = "none"
         cardViewElem.style.display = "block"
+        listViewElem.style.display = "none"
     } else {
         renderListView(gameList)
-        cardViewElem.style.display = "none"
         listViewElem.style.display = "block"
+        cardViewElem.style.display = "none"
     }
 }
 
@@ -121,7 +121,7 @@ function renderListView(list) {
 
 // Render the card view base on the array passed in 
 function renderCardView(list) {
-    document.querySelector("#cardView").innerHTML = "";
+    document.querySelector("#cardRow").innerHTML = "";
     for (let each of list) {
         renderSingleCardView(each);
     }
@@ -178,7 +178,7 @@ function renderSingleCardView(game) {
     </div>
     </div>
     </div>`);
-    $('#cardrow').append(cardhtml);
+    $('#cardRow').append(cardhtml);
 }
 
 // Return the string of genres
