@@ -2,6 +2,9 @@
 let gameList = [];
 let genreList = [];
 let platformList = [];
+let state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All"}, 
+            gameListFiltered: gameList}
+
 
 // Get initial gameList[], here we want 100 games which is 5 pages
 getGameList(5);
@@ -9,6 +12,9 @@ getGameList(5);
 getGenreList();
 // initialize platform list
 getPlatformList();
+// initialize eventlisteners
+//setEventListeners()
+
 
 // Switch between two views
 function switchview(checkbox) {
@@ -37,6 +43,11 @@ function getGameListByPage(pageNum, pageCounts) {
         if (gameList.length >= (pageCounts * 20)){
             console.log(gameList);
             renderListView(gameList);
+            console.log(state);
+            state.filter.length = 12;
+            state.filter.platform = "macOS";
+            updateGameListFiltered();
+            console.log(state);
         }
         return data;
     })
@@ -240,6 +251,48 @@ function appendFirstOption(parent) {
     firstOptionElem.textContent = "All";
     parent.appendChild(firstOptionElem);
     return parent;
+}
+
+// Add listerners to all filters and update the state
+
+// Update the state based on filter
+function updateGameListFiltered() {
+    state.gameListFiltered = gameList.filter((each) => {
+        if (state.filter.length == 0 || state.filter.length == "") {
+            return true;
+        }
+        return each.playtime >= state.filter.length;
+    })
+    .filter((each) => {
+        if (state.filter.rating == 0) {
+            return true;
+        }
+        return each.rating >= state.filter.rating;
+    })
+    .filter((each) => {
+        if(state.filter.startYear == 0 || state.filter.startYear == "") {
+            return true;
+        }
+        return each.released.substring(0, 4) >= state.filter.startYear;
+    })
+    .filter((each) => {
+        if(state.filter.endYear == 0 || state.filter.endYear == "") {
+            return true;
+        }
+        return each.released.substring(0, 4) <= state.filter.endYear;
+    })
+    .filter((each) => {
+        if(state.filter.platform == "All") {
+            return true;
+        }
+        for (let platform of each.platforms) {
+            if (state.filter.platform == platform.platform.name) {
+                return true;
+            }
+        }
+        return false;
+    });
+    
 }
 
 
