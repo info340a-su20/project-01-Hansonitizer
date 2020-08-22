@@ -45,6 +45,11 @@ nav h2{
 
 .slider {
     fill: #2c8e88;
+    cursor: pointer;
+}
+
+#platform, #genre {
+    cursor: pointer;
 }
 
 .card-img{
@@ -64,7 +69,7 @@ nav h2{
 .fit-image{
     width: 100%;
     object-fit: cover;
-    height: 392.5px; 
+    height: 100%; 
 }
 
 .fit-list-image {
@@ -99,6 +104,7 @@ nav h2{
 
 .apple-switch {
     margin: auto;
+    cursor: pointer;
 }
 
 .list {
@@ -118,6 +124,7 @@ nav h2{
     float: left;
     width: 80%;
     background: #f1f1f1;
+    cursor: text;
 }
 
 .search_btn{
@@ -130,6 +137,7 @@ nav h2{
     font-size: 17px;
     border: 1px solid grey;
     border-left: none;
+    cursor: pointer;
 }
 
 .search_btn:hover {
@@ -161,16 +169,17 @@ footer {
 
 #hover-info:hover h3 {
     opacity: 1;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     text-align: center;
-    padding: 60px 0;
+    padding: 37px 0;
 }
 
 #hover-info:hover p {
     opacity: 1;
-    font-size: 18px;
+    font-size: 15px;
     text-align: center;
+    margin-bottom: 5px;
 }
 
 /*Following codes are based on website for styling swtich: https://codeburst.io/pure-css3-input-as-the-ios-checkbox-8b6347d5cefb */

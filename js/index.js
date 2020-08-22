@@ -174,7 +174,7 @@ function renderSingleCardView(game) {
     <img class="card-img img-fluid fit-image" src="${game.background_image}" alt="Card image">
     <div class="card-img-overlay">
         <h3 class="card-title text-black">${game.name}</h3>
-        <p class="card-text text-black">${createGenreString(game)}<br>${game.playtime} hours<br>${game.released}<br>${createPlatformString(game)}</p>
+        <p class="card-text text-black">${createGenreString(game)}<br>${game.released}<br>${createPlatformString(game)}</p>
     </div>
     </div>
     </div>`);
