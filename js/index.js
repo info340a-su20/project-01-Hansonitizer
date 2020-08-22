@@ -198,7 +198,8 @@ function renderSingleListView(game) {
         + "Length: " + game.playtime + " hours" + "<br>"
         + "Released: " + game.released + "<br>"
         + "Genres: " + createGenreString(game) + "<br>"
-        + "Platforms: " + createPlatformString(game); 
+        + "Platforms: " + createPlatformString(game) + "<br>"
+        + 'Stores: <a href="' + createStoreURL(game) +'">' + createStoreString(game) + "</a>"; 
     textColElem.appendChild(pElem);
     let listViewElem = document.querySelector("#listView");
     listViewElem.appendChild(cardElem);
@@ -235,6 +236,24 @@ function createPlatformString(game){
         platformList.push(each.platform.name);
     }
     return arrayToString(platformList);
+}
+
+// Returns string store names
+function createStoreString(game) {
+    let storeList = [];
+    for (let each of game.stores) {
+        storeList.push(each.store.name);
+    }
+    return arrayToString(storeList);
+}
+
+// Return string of store URLs
+function createStoreURL(game) {
+    let storeURL = [];
+    for (let each of game.stores) {
+        storeURL.push(each.url_en);
+    }
+    return arrayToString(storeURL);
 }
 
 // Convert the array to string
