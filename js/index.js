@@ -258,7 +258,7 @@ function renderSingleListView(game) {
         + "Released: " + game.released + "<br>"
         + "Genres: " + createGenreString(game) + "<br>"
         + "Platforms: " + createPlatformString(game) + "<br>"
-        + 'Stores: <a href="' + createStoreURL(game) +'">' + createStoreString(game) + "</a>"; 
+        + "Stores: " + createStoreString(game); 
     textColElem.appendChild(pElem);
     let listViewElem = document.querySelector("#listView");
     listViewElem.appendChild(cardElem);
@@ -301,7 +301,7 @@ function createPlatformString(game){
 function createStoreString(game) {
     let storeList = [];
     for (let each of game.stores) {
-        storeList.push(each.store.name);
+        storeList.push("<a href=\"" + each.url_en +"\">" + each.store.name +"</a>");
     }
     return arrayToString(storeList);
 }
