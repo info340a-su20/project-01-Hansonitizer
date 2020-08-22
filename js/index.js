@@ -53,6 +53,14 @@ function setBtnEventListerners() {
 
 function checkState() {
     if (state.filter.startYear > state.filter.endYear) {
+        let alertHtml = 
+        (`<div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Invalid year!</strong> Make sure year to is greater than year from!
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        </div>`)
+        $('#year_to').append(alertHtml);
         state.filter.startYear = 0;
         state.filter.endYear = 0;
         document.querySelector("#year_from").value = 0;
@@ -258,7 +266,8 @@ function renderSingleListView(game) {
         + "Length: " + game.playtime + " hours" + "<br>"
         + "Released: " + game.released + "<br>"
         + "Genres: " + createGenreString(game) + "<br>"
-        + "Platforms: " + createPlatformString(game); 
+        + "Platforms: " + createPlatformString(game) + "<br>"
+        + 'Stores: <a href="' + createStoreURL(game) +'">' + createStoreString(game) + "</a>"; 
     textColElem.appendChild(pElem);
     let listViewElem = document.querySelector("#listView");
     listViewElem.appendChild(cardElem);
@@ -295,6 +304,24 @@ function createPlatformString(game){
         platformList.push(each.platform.name);
     }
     return arrayToString(platformList);
+}
+
+// Returns string store names
+function createStoreString(game) {
+    let storeList = [];
+    for (let each of game.stores) {
+        storeList.push(each.store.name);
+    }
+    return arrayToString(storeList);
+}
+
+// Return string of store URLs
+function createStoreURL(game) {
+    let storeURL = [];
+    for (let each of game.stores) {
+        storeURL.push(each.url_en);
+    }
+    return arrayToString(storeURL);
 }
 
 // Convert the array to string
