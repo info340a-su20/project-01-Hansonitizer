@@ -13,7 +13,12 @@ getGenreList();
 // initialize platform list
 getPlatformList();
 // initialize eventlisteners
-//setEventListeners()
+//setInputEventListeners();
+//setBtnEventListerners();
+
+function setBtnEventListerners(){
+    
+}
 
 
 // Switch between two views
@@ -44,7 +49,7 @@ function getGameListByPage(pageNum, pageCounts) {
             console.log(gameList);
             renderListView(gameList);
             console.log(state);
-            state.filter.length = 12;
+            state.filter.genre = "Action"
             state.filter.platform = "macOS";
             updateGameListFiltered();
             console.log(state);
@@ -287,6 +292,17 @@ function updateGameListFiltered() {
         }
         for (let platform of each.platforms) {
             if (state.filter.platform == platform.platform.name) {
+                return true;
+            }
+        }
+        return false;
+    })
+    .filter((each) => {
+        if(state.filter.genre == "All") {
+            return true;
+        }
+        for (let genre of each.genres) {
+            if (state.filter.genre == genre.name) {
                 return true;
             }
         }
