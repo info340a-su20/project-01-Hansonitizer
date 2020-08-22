@@ -2,7 +2,7 @@
 let gameList = [];
 let genreList = [];
 let platformList = [];
-let state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All"}, 
+let state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All", name:""}, 
             gameListFiltered: gameList}
 
 
@@ -21,13 +21,23 @@ function setBtnEventListerners() {
     applyBtnElem.addEventListener("click", function() {
         if (checkState()) {
             updateGameListFiltered();
-            console.log(state);
             renderView();
         }
     });
+    let searchBtnElem = document.querySelector("#searchBtn");
+    searchBtnElem.addEventListener("click", function() {
+        if (state.filter.name == "") {
+            state.gameListFiltered = gameList;
+        } else {
+            state.gameListFiltered = state.gameListFiltered.filter((each) => {
+                return (each.name.toLowerCase().indexOf(state.filter.name.toLowerCase()) >= 0);
+            });
+        }
+        renderView();
+    });
     let clearBtnElem = document.querySelector("#clearBtn");
     clearBtnElem.addEventListener("click", function() {
-        state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All"}, 
+        state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All", name:""}, 
                 gameListFiltered: gameList};
         document.querySelector("#length").value = "";
         document.querySelector("#rating").value = 0;
@@ -36,6 +46,7 @@ function setBtnEventListerners() {
         document.querySelector("#year_to").value = "";
         document.querySelector("#platform").value = "All";
         document.querySelector("#genre").value = "All";
+        document.querySelector("#searchInput").value ="";
         renderView();
     })
 }
@@ -51,7 +62,8 @@ function checkState() {
     }
     return true;
 }
-    
+
+// set the event listerners for input fields
 function setInputEventListeners() {
     let lengthEvent = document.querySelector("#length");
     lengthEvent.addEventListener('input', () => {
@@ -77,6 +89,11 @@ function setInputEventListeners() {
     let genreEvent = document.querySelector('#genre');
     genreEvent.addEventListener('change', () => {
         state.filter.genre = genre.value;
+    });
+    let searchInputElem = document.querySelector("#searchInput");
+    searchInputElem.addEventListener("input", () => {
+        state.filter.name = searchInputElem.value;
+        console.log(state.filter.name);
     });
 }
 
@@ -322,8 +339,6 @@ function appendFirstOption(parent) {
     parent.appendChild(firstOptionElem);
     return parent;
 }
-
-// Add listerners to all filters and update the state
 
 // Update the state based on filter
 function updateGameListFiltered() {
