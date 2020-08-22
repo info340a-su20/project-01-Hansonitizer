@@ -5,24 +5,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <meta name="author" content="Sitong Wu and Hanson Vuong">
     <meta name="description" content="Web app that suggestions games you should play.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>What to Play Next</title>
-    <script>
-        function switchview(checkbox) {
-            var all = document.getElementById("all");
-            var img = document.getElementById("img");
-            if (checkbox.checked) {
-                img.style.display = "block"
-                all.style.display = "none"
-            } else {
-                all.style.display = "block"
-                img.style.display = "none"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -37,8 +25,8 @@
                     <p>Suggesting games for you to play!</p>
                 </div>
                 <div class="col col-12 col-lg-8 col-xl-7 search">
-                    <input class="search_input" type="text" placeholder="Search" aria-label="Search" role="input">
-                    <button class="search_btn"><i class="fas fa-search fa-flip-horizontal" aria-label="search button" role="button"></i></button>
+                    <input class="search_input" id="searchInput" type="text" placeholder="Search" aria-label="Search" role="input">
+                    <button class="search_btn" id="searchBtn"><i class="fas fa-search fa-flip-horizontal" aria-label="search button" role="button"></i></button>
                 </div>
             </div>
         </div>
@@ -56,7 +44,7 @@
                                     <p>List</p>
                                 </div>
                                 <div class="col col-auto">
-                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
+                                    <input type="checkbox" class="apple-switch" id="viewSwitch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
                                 </div>
                                 <div class="col col-auto grid">
                                     <p>Grid</p>
@@ -70,114 +58,47 @@
                         </div>
                         <div class="filter">
                             <label for="rating">Game Rating</label>
-                            <input type="range" name="rating" id="rating" min="0" max="10" step="0.5" class="slider" aria-label="Game Rating" role="slider">
-                            <output class="rating-output" for="rating"></output>
+                            <input type="range" name="rating" id="rating" min="0" max="5" step="0.25" class="slider" aria-label="Game Rating" role="slider" value=0 oninput="ratingvalue.value = rating.value">
+                            <output class="rating-output" for="rating" id="ratingvalue">0</output>
                         </div>
                         <div class="filter">
-                            <label for="year">Release Year</label>
-                            <input type="year" name="year" id="year" aria-label="Release year" role="input">
+                            <label for="year">Release Year (from)</label>
+                            <input type="number" name="year_from" id="year_from" aria-label="Release year from" role="input">
                         </div>  
+                        <div class="filter">
+                            <label for="year">Release Year (to)</label>
+                            <input type="number" name="year_to" id="year_to" aria-label="Release year to" role="input">
+                            <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="yearAlert">
+                                <strong>Invalid year!</strong> Make sure year to is greater than year from!
+                            </div>
+                        </div>
                         <div class="filter">
                             <label for="platform">Platform</label>
                             <select name="platform" id="platform" aria-label="Platform" role="selector">
-                                <option value="switch">Switch</option>
-                                <option value="xbone">Xbox One</option>
-                                <option value="ps4">PlayStation 4</option>
+                                <!-- platform list goes here -->
+                            </select>
+                        </div>
+                        <div class="filter genre-options">
+                            <label for="genre">Genre</label>
+                            <select name="genre" id="genre" aria-label="Genre" role="selector">
+                                <!-- genre list goes here -->
                             </select>
                         </div>
                         <div class="filter">
-                            <label for="genre">Genre</label>
-                            <select name="genre" id="genre" aria-label="Genre" role="selector">
-                                <option value="action">Action</option>
-                                <option value="shooter">Shooter</option>
-                                <option value="rpg">RPG</option>
-                            </select>
+                            <button class="btn btn-primary" id="applyBtn">Apply Filter</button>
+                            <button class="btn btn-primary" id="clearBtn">Clear Filter</button>
                         </div>
                     </nav>
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="all">
-                   
-                    <!-- Game 1 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-auto">
-                                    <img class="pb-3 img-fluid img-max" src="img/zelda_botw.png" alt="The Legend of Zelda: Breath of the Wild icon" aria-label="The Legend of Zelda: Breath of the Wild icon">
-                                </div>
-                                <div class="col-sm">
-                                    <h2 class="card-title">The Legend of Zelda: Breath of the Wild</h2>
-                                    <p class="card-text">Length: 87.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97<br>Platform: Nintendo Switch</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game 2 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-auto">
-                                    <img class="pb-3 img-fluid img-max" src="img/super_mario.png" alt="Super Mario Odyssey icon" aria-label="Super Mario Odyssey icon">
-                                </div>
-                                <div class="col-sm">
-                                    <h2 class="card-title">Super Mario Odyssey</h2>
-                                    <p class="card-text">Length: 26.5 hours<br>Genre: Action<br>Released: 2017<br>Rating: 97 <br>Platform: Nintendo Switch</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Game 3 -->
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-auto">
-                                    <img class="pb-3 img-fluid img-max" src="img/three_houses.jpg" alt="Fire Emblem: Three Houses icon" aria-label="Fire Emblem: Three Houses icon">
-                                </div>
-                                <div class="col-sm">
-                                    <h2 class="game-title">Fire Emblem: Three Houses</h2>
-                                    <p class="card-text">Length: 66 hours<br>Genre: RPG<br>Released: 2019<br>Rating: 89<br>Platform: Nintendo Switch</p></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="col col-12 col-lg-9 bg-secondary d-none" id="loading">
+                    <i class="fa fa-spinner fa-spin fa-5x loadingIcon" aria-hidden="true"></i>
                 </div>
-                <div class="col col-12 col-lg-9 bg-secondary" id="img">
-                    <div class="row">
-
-                        <!-- Game 1 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/zelda_botw.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">The Legend of Zelda: Breath of the Wild</h3>
-                                    <p class="card-text text-black">Action<br>87.5 hours <br>2017</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Game 2 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/super_mario.png" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">Super Mario Odyssey</h3>
-                                    <p class="card-text text-black">Action<br>26.5 hours<br>2017</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Game 3 -->
-                        <div class="col-md-6">
-                            <div class="card card-img-top" id="hover-info">
-                                <img class="card-img img-fluid" src="img/three_houses.jpg" alt="Card image">
-                                <div class="card-img-overlay">
-                                    <h3 class="card-title text-black">Fire Emblem: Three Houses</h3>
-                                    <p class="card-text text-black">Action<br>66 hours<br>2019</p>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col col-12 col-lg-9 bg-secondary" id="listView">
+                    <!-- list view goes here -->
+                </div>
+                <div class="col col-12 col-lg-9 bg-secondary" id="cardView">
+                    <div class="row" id="cardRow">
+                        <!-- card view goes here -->
                     </div>
                 </div>
             </div>
@@ -186,8 +107,9 @@
 
     </main>
 
-    <footer>Website created by Hanson Vuong and Sitong Wu<br>Images from Nintendo Co. Ltd.<br>Published in 2020</footer>
-
+    <footer>Website created by Hanson Vuong and Sitong Wu<br>Data taken from <a href="https://rawg.io/">https://rawg.io/</a><br>Published in 2020</footer>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
 
 </html>
