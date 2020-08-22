@@ -13,7 +13,34 @@ getGenreList();
 // initialize platform list
 getPlatformList();
 // initialize eventlisteners
-//setEventListeners()
+setEventListeners();
+function setEventListeners() {
+    let lengthEvent = document.querySelector("#length");
+    lengthEvent.addEventListener('input', () => {
+        state.filter.length = lengthEvent.value;
+        console.log(state);
+    });
+    let ratingEvent = document.querySelector('#rating');
+    ratingEvent.addEventListener('input', () => {
+        state.filter.rating = ratingEvent.value;
+    });
+    let startYearEvent = document.querySelector('#year_from');
+    startYearEvent.addEventListener('input', () => {
+        state.filter.startYear = startYearEvent.value;
+    });
+    let endYearEvent = document.querySelector('#year_to');
+    endYearEvent.addEventListener('input', () => {
+        state.filter.endYear = endYearEvent.value;
+    });
+    let platformEvent = document.querySelector('#platform');
+    platformEvent.addEventListener('change', () => {
+        state.filter.platform = platform.value;
+    });
+    let genreEvent = document.querySelector('#genre');
+    genreEvent.addEventListener('change', () => {
+        state.filter.genre = genre.value;
+    });
+}
 
 
 // Switch between two views
