@@ -61,9 +61,13 @@
                             <output class="rating-output" for="rating"></output>
                         </div>
                         <div class="filter">
-                            <label for="year">Release Year</label>
-                            <input type="year" name="year" id="year" aria-label="Release year" role="input">
+                            <label for="year">Release Year (from)</label>
+                            <input type="year" name="year_from" id="year_from" aria-label="Release year from" role="input">
                         </div>  
+                        <div class="filter">
+                            <label for="year">Release Year (to)</label>
+                            <input type="year" name="year_to" id="year_to" aria-label="Release year to" role="input">
+                        </div>
                         <div class="filter">
                             <label for="platform">Platform</label>
                             <select name="platform" id="platform" aria-label="Platform" role="selector">
@@ -75,6 +79,9 @@
                             <select name="genre" id="genre" aria-label="Genre" role="selector">
                                 <!-- genre list goes here -->
                             </select>
+                        </div>
+                        <div class="filter">
+                            <button class="btn btn-primary">Apply Filter</button>
                         </div>
                     </nav>
                 </div>
