@@ -13,11 +13,71 @@ getGenreList();
 // initialize platform list
 getPlatformList();
 // initialize eventlisteners
-//setInputEventListeners();
-//setBtnEventListerners();
+setInputEventListeners();
+setBtnEventListerners();
 
-function setBtnEventListerners(){
+function setBtnEventListerners() {
+    let applyBtnElem = document.querySelector("#applyBtn");
+    applyBtnElem.addEventListener("click", function() {
+        if (checkState()) {
+            updateGameListFiltered();
+            console.log(state);
+            renderView();
+        }
+    });
+    let clearBtnElem = document.querySelector("#clearBtn");
+    clearBtnElem.addEventListener("click", function() {
+        state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All"}, 
+                gameListFiltered: gameList};
+        document.querySelector("#length").value = "";
+        document.querySelector("#rating").value = 0;
+        document.querySelector("#ratingvalue").value = 0;
+        document.querySelector("#year_from").value = "";
+        document.querySelector("#year_to").value = "";
+        document.querySelector("#platform").value = "All";
+        document.querySelector("#genre").value = "All";
+        renderView();
+    })
+}
+
+function checkState() {
+    if (state.filter.startYear > state.filter.endYear) {
+        state.filter.startYear = 0;
+        state.filter.endYear = 0;
+        document.querySelector("#year_from").value = 0;
+        document.querySelector("#year_to").value = 0;
+        console.log(state);
+        return false;
+    }
+    return true;
+}
     
+function setInputEventListeners() {
+    let lengthEvent = document.querySelector("#length");
+    lengthEvent.addEventListener('input', () => {
+        state.filter.length = lengthEvent.value;
+        console.log(state);
+    });
+    let ratingEvent = document.querySelector('#rating');
+    ratingEvent.addEventListener('input', () => {
+        state.filter.rating = ratingEvent.value;
+    });
+    let startYearEvent = document.querySelector('#year_from');
+    startYearEvent.addEventListener('input', () => {
+        state.filter.startYear = startYearEvent.value;
+    });
+    let endYearEvent = document.querySelector('#year_to');
+    endYearEvent.addEventListener('input', () => {
+        state.filter.endYear = endYearEvent.value;
+    });
+    let platformEvent = document.querySelector('#platform');
+    platformEvent.addEventListener('change', () => {
+        state.filter.platform = platform.value;
+    });
+    let genreEvent = document.querySelector('#genre');
+    genreEvent.addEventListener('change', () => {
+        state.filter.genre = genre.value;
+    });
 }
 
 
@@ -26,13 +86,23 @@ function switchview(checkbox) {
     let listViewElem = document.getElementById("listView");
     let cardViewElem = document.getElementById("cardView");
     if (checkbox.checked) {
-        renderCardView(gameList);
+        renderCardView(state.gameListFiltered);
         cardViewElem.style.display = "block"
         listViewElem.style.display = "none"
     } else {
-        renderListView(gameList)
+        renderListView(state.gameListFiltered)
         listViewElem.style.display = "block"
         cardViewElem.style.display = "none"
+    }
+}
+
+// Render the current view
+function renderView() {
+    let checkBoxElem = document.querySelector("#viewSwitch");
+    if (checkBoxElem.checked) {
+        renderCardView(state.gameListFiltered);
+    } else {
+        renderListView(state.gameListFiltered)
     }
 }
 
@@ -48,11 +118,6 @@ function getGameListByPage(pageNum, pageCounts) {
         if (gameList.length >= (pageCounts * 20)){
             console.log(gameList);
             renderListView(gameList);
-            console.log(state);
-            state.filter.genre = "Action"
-            state.filter.platform = "macOS";
-            updateGameListFiltered();
-            console.log(state);
         }
         return data;
     })
@@ -231,7 +296,7 @@ function renderGenreSelector() {
     genreSelectorElem = appendFirstOption(genreSelectorElem);
     for (let each of genreList) {
         let optionElem = document.createElement("option");
-        optionElem.value = each.slug;
+        optionElem.value = each.name;
         optionElem.textContent = each.name;
         genreSelectorElem.appendChild(optionElem);
     }
@@ -243,7 +308,7 @@ function renderPlatformSelector() {
     platformSelectorElem = appendFirstOption(platformSelectorElem);
     for (let each of platformList) {
         let optionElem = document.createElement("option");
-        optionElem.value = each.slug;
+        optionElem.value = each.name;
         optionElem.textContent = each.name;
         platformSelectorElem.appendChild(optionElem);
     }
@@ -252,7 +317,7 @@ function renderPlatformSelector() {
 // Append the first child of selector which is "All"
 function appendFirstOption(parent) {
     let firstOptionElem = document.createElement("option");
-    firstOptionElem.value = "all";
+    firstOptionElem.value = "All";
     firstOptionElem.textContent = "All";
     parent.appendChild(firstOptionElem);
     return parent;

@@ -43,7 +43,7 @@
                                     <p>List</p>
                                 </div>
                                 <div class="col col-auto">
-                                    <input type="checkbox" class="apple-switch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
+                                    <input type="checkbox" class="apple-switch" id="viewSwitch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
                                 </div>
                                 <div class="col col-auto grid">
                                     <p>Grid</p>
@@ -62,11 +62,11 @@
                         </div>
                         <div class="filter">
                             <label for="year">Release Year (from)</label>
-                            <input type="year" name="year_from" id="year_from" aria-label="Release year from" role="input">
+                            <input type="number" name="year_from" id="year_from" aria-label="Release year from" role="input">
                         </div>  
                         <div class="filter">
                             <label for="year">Release Year (to)</label>
-                            <input type="year" name="year_to" id="year_to" aria-label="Release year to" role="input">
+                            <input type="number" name="year_to" id="year_to" aria-label="Release year to" role="input">
                         </div>
                         <div class="filter">
                             <label for="platform">Platform</label>
@@ -81,8 +81,8 @@
                             </select>
                         </div>
                         <div class="filter">
-                            <button class="btn btn-primary">Apply Filter</button>
-                            <button class="btn btn-primary">Clear Filter</button>
+                            <button class="btn btn-primary" id="applyBtn">Apply Filter</button>
+                            <button class="btn btn-primary" id="clearBtn">Clear Filter</button>
                         </div>
                     </nav>
                 </div>
