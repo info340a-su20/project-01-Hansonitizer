@@ -53,21 +53,10 @@ function setBtnEventListerners() {
 
 function checkState() {
     if (state.filter.startYear > state.filter.endYear) {
-        let alertHtml = 
-        (`<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Invalid year!</strong> Make sure year to is greater than year from!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        </div>`)
-        $('#year_to').append(alertHtml);
-        state.filter.startYear = 0;
-        state.filter.endYear = 0;
-        document.querySelector("#year_from").value = 0;
-        document.querySelector("#year_to").value = 0;
-        console.log(state);
+        document.querySelector("#yearAlert").classList.remove("d-none");
         return false;
     }
+    document.querySelector("#yearAlert").classList.add("d-none");
     return true;
 }
 
@@ -133,6 +122,7 @@ function renderView() {
 
 // Fetch the data and store it in a global variable gameList[]
 function getGameListByPage(pageNum, pageCounts) {
+    document.querySelector("#loading").classList.remove("d-none");
     let fetchResult = fetch("https://api.rawg.io/api/games?page=" + pageNum)
     .then(function(response) {
         let dataPromise = response.json();
@@ -142,6 +132,7 @@ function getGameListByPage(pageNum, pageCounts) {
         alterGameList(data);
         if (gameList.length >= (pageCounts * 20)){
             console.log(gameList);
+            document.querySelector("#loading").classList.add("d-none");
             renderListView(gameList);
         }
         return data;
@@ -414,6 +405,12 @@ function updateGameListFiltered() {
             }
         }
         return false;
+    })
+    .filter((each) => {
+        if (state.filter.name == "") {
+            return true;
+        }
+        return (each.name.toLowerCase().indexOf(state.filter.name.toLowerCase()) >= 0);
     });
     
 }

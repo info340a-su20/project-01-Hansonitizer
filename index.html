@@ -5,10 +5,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <meta name="author" content="Sitong Wu and Hanson Vuong">
     <meta name="description" content="Web app that suggestions games you should play.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <title>What to Play Next</title>
 </head>
 
@@ -67,6 +68,9 @@
                         <div class="filter">
                             <label for="year">Release Year (to)</label>
                             <input type="number" name="year_to" id="year_to" aria-label="Release year to" role="input">
+                            <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="yearAlert">
+                                <strong>Invalid year!</strong> Make sure year to is greater than year from!
+                            </div>
                         </div>
                         <div class="filter">
                             <label for="platform">Platform</label>
@@ -85,6 +89,9 @@
                             <button class="btn btn-primary" id="clearBtn">Clear Filter</button>
                         </div>
                     </nav>
+                </div>
+                <div class="col col-12 col-lg-9 bg-secondary d-none" id="loading">
+                    <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
                 </div>
                 <div class="col col-12 col-lg-9 bg-secondary" id="listView">
                     <!-- list view goes here -->
