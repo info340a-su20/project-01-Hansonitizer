@@ -67,8 +67,7 @@ function checkState() {
 function setInputEventListeners() {
     let lengthEvent = document.querySelector("#length");
     lengthEvent.addEventListener('input', () => {
-        state.filter.length = lengthEvent.value;
-        console.log(state);
+        state.filter.length = lengthEvent.value
     });
     let ratingEvent = document.querySelector('#rating');
     ratingEvent.addEventListener('input', () => {
@@ -93,7 +92,6 @@ function setInputEventListeners() {
     let searchInputElem = document.querySelector("#searchInput");
     searchInputElem.addEventListener("input", () => {
         state.filter.name = searchInputElem.value;
-        console.log(state.filter.name);
     });
 }
 
@@ -103,7 +101,6 @@ function setCheckBoxEventListerners() {
     let cardViewElem = document.getElementById("cardView");
     let checkBoxElem = document.getElementById("viewSwitch");
     checkBoxElem.addEventListener("change", function() {
-        console.log("switch view");
         if (checkBoxElem.checked) {
             renderCardView(state.gameListFiltered);
             cardViewElem.style.display = "block"
@@ -137,7 +134,6 @@ function getGameListByPage(pageNum, pageCounts) {
     .then(function(data) {
         alterGameList(data);
         if (gameList.length >= (pageCounts * 20)){
-            console.log(gameList);
             document.querySelector("#loading").classList.add("d-none");
             renderListView(gameList);
         }
@@ -303,7 +299,7 @@ function createPlatformString(game){
     return arrayToString(platformList);
 }
 
-// Returns string store names
+// Returns innerHTML for stores
 function createStoreString(game) {
     let storeList = [];
     for (let each of game.stores) {
