@@ -103,6 +103,7 @@ function setCheckBoxEventListerners() {
     let cardViewElem = document.getElementById("cardView");
     let checkBoxElem = document.getElementById("viewSwitch");
     checkBoxElem.addEventListener("change", function() {
+        console.log("switch view");
         if (checkBoxElem.checked) {
             renderCardView(state.gameListFiltered);
             cardViewElem.style.display = "block"
