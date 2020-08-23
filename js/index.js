@@ -2,7 +2,7 @@
 let gameList = [];
 let genreList = [];
 let platformList = [];
-let state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All", name:""}, 
+let state = {filter:{length: 5, rating: 0, startYear: 2000, endYear: 2020, platform: "All", genre:"All", name:""}, 
             gameListFiltered: gameList}
 
 
@@ -15,7 +15,9 @@ getPlatformList();
 // initialize eventlisteners
 setInputEventListeners();
 setBtnEventListerners();
+setCheckBoxEventListerners();
 
+// set the event listerners to buttons
 function setBtnEventListerners() {
     let applyBtnElem = document.querySelector("#applyBtn");
     applyBtnElem.addEventListener("click", function() {
@@ -37,13 +39,13 @@ function setBtnEventListerners() {
     });
     let clearBtnElem = document.querySelector("#clearBtn");
     clearBtnElem.addEventListener("click", function() {
-        state = {filter:{length: 0, rating: 0, startYear: 0, endYear: 0, platform: "All", genre:"All", name:""}, 
-                gameListFiltered: gameList};
+        state = {filter:{length: 5, rating: 0, startYear: 2000, endYear: 2020, platform: "All", genre:"All", name:""}, 
+                gameListFiltered: gameList}
         document.querySelector("#length").value = "";
         document.querySelector("#rating").value = 0;
         document.querySelector("#ratingvalue").value = 0;
-        document.querySelector("#year_from").value = "";
-        document.querySelector("#year_to").value = "";
+        document.querySelector("#year_from").value = 2000;
+        document.querySelector("#year_to").value = 2020;
         document.querySelector("#platform").value = "All";
         document.querySelector("#genre").value = "All";
         document.querySelector("#searchInput").value ="";
@@ -51,6 +53,7 @@ function setBtnEventListerners() {
     })
 }
 
+// Check if the state data is vaild
 function checkState() {
     if (state.filter.startYear > state.filter.endYear) {
         document.querySelector("#yearAlert").classList.remove("d-none");
@@ -94,20 +97,22 @@ function setInputEventListeners() {
     });
 }
 
-
-// Switch between two views
-function switchview(checkbox) {
+// Using checkbox to Switch between two views
+function setCheckBoxEventListerners() {
     let listViewElem = document.getElementById("listView");
     let cardViewElem = document.getElementById("cardView");
-    if (checkbox.checked) {
-        renderCardView(state.gameListFiltered);
-        cardViewElem.style.display = "block"
-        listViewElem.style.display = "none"
-    } else {
-        renderListView(state.gameListFiltered)
-        listViewElem.style.display = "block"
-        cardViewElem.style.display = "none"
-    }
+    let checkBoxElem = document.getElementById("viewSwitch");
+    checkBoxElem.addEventListener("change", function() {
+        if (checkBoxElem.checked) {
+            renderCardView(state.gameListFiltered);
+            cardViewElem.style.display = "block"
+            listViewElem.style.display = "none"
+        } else {
+            renderListView(state.gameListFiltered)
+            listViewElem.style.display = "block"
+            cardViewElem.style.display = "none"
+        }
+    });
 }
 
 // Render the current view

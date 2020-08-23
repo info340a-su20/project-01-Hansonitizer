@@ -44,7 +44,7 @@
                                     <p>List</p>
                                 </div>
                                 <div class="col col-auto">
-                                    <input type="checkbox" class="apple-switch" id="viewSwitch" onchange="switchview(this)" aria-label="Change view" role="checkbox" >
+                                    <input type="checkbox" class="apple-switch" id="viewSwitch" aria-label="Change view" role="checkbox" >
                                 </div>
                                 <div class="col col-auto grid">
                                     <p>Grid</p>
@@ -54,20 +54,20 @@
                         <h2>Filters</h2>
                         <div class="filter">
                             <label for="length">Game Length (hrs)</label>
-                            <input type="number" name="length" id="length" min="0" aria-label="Game Length" role="input">
+                            <input type="number" name="length" id="length" min="0" aria-label="Game Length" role="input" value=5>
                         </div>
                         <div class="filter">
-                            <label for="rating">Game Rating</label>
+                            <label for="rating">Game Rating (greater than)</label>
                             <input type="range" name="rating" id="rating" min="0" max="5" step="0.25" class="slider" aria-label="Game Rating" role="slider" value=0 oninput="ratingvalue.value = rating.value">
                             <output class="rating-output" for="rating" id="ratingvalue">0</output>
                         </div>
                         <div class="filter">
                             <label for="year">Release Year (from)</label>
-                            <input type="number" name="year_from" id="year_from" aria-label="Release year from" role="input">
+                            <input type="number" name="year_from" id="year_from" aria-label="Release year from" role="input" value=2000>
                         </div>  
                         <div class="filter">
                             <label for="year">Release Year (to)</label>
-                            <input type="number" name="year_to" id="year_to" aria-label="Release year to" role="input">
+                            <input type="number" name="year_to" id="year_to" aria-label="Release year to" role="input" value=2020>
                             <div class="alert alert-warning alert-dismissible fade show d-none" role="alert" id="yearAlert">
                                 <strong>Invalid year!</strong> Make sure year to is greater than year from!
                             </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="filter">
                             <button class="btn btn-primary" id="applyBtn">Apply Filter</button>
-                            <button class="btn btn-primary" id="clearBtn">Clear Filter</button>
+                            <button class="btn btn-primary" id="clearBtn">Reset Filter</button>
                         </div>
                     </nav>
                 </div>
