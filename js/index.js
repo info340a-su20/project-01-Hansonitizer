@@ -269,12 +269,14 @@ function renderSingleListView(game) {
 // Render a single card view block
 function renderSingleCardView(game) {
     var cardhtml = 
-    (`<div class="col-md-6">
+    (`
+    <div class="col-md-6">
     <div class="card card-img-top" id="hover-info">
-    <img class="card-img img-fluid fit-image" src="${game.background_image}" alt="Card image">
+    <img class="card-img img-fluid fit-image" src="${game.background_image}" alt="Card image"></a>
     <div class="card-img-overlay">
         <h3 class="card-title text-black">${game.name}</h3>
         <p class="card-text text-black">${createGenreString(game)}<br>${game.released}<br>${createPlatformString(game)}</p>
+        <a href="${createSingleURL(game)}" class="stretched-link"></a>
     </div>
     </div>
     </div>`);
@@ -315,6 +317,14 @@ function createStoreURL(game) {
         storeURL.push(each.url_en);
     }
     return arrayToString(storeURL);
+}
+
+function createSingleURL(game) {
+    let storeURL = [];
+    for (let each of game.stores) {
+        storeURL.push(each.url_en);
+    }
+    return storeURL[0];
 }
 
 // Convert the array to string
